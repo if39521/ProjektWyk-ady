@@ -1,5 +1,5 @@
 <?php
-   include('session.php');
+session_start();
 ?>
 <html>
    
@@ -9,9 +9,9 @@
    
    <body>
       <h1>Welcome <?php 
-      if (isset($_SESSION['login_user']))
+      if (!empty($_SESSION['login_user']))
       echo $_SESSION['login_user']; ?></h1> 
-      <h2><a href = "logout.php">Sign Out</a></h2>
+      <h2><a href = "ajax/logout.php">Sign Out</a></h2>
    </body>
    
 </html>

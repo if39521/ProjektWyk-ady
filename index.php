@@ -1,5 +1,4 @@
 <?php 
-/* Main page with two forms: sign up and log in */
 session_start();
 ?>
 <!DOCTYPE html>
@@ -18,7 +17,7 @@ session_start();
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" action="login.php" method="POST">
+				<form class="login100-form validate-form" action='ajax/login.php' method="POST">
 					<span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
 					</span>
@@ -33,7 +32,7 @@ session_start();
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="pass" placeholder="Password">
+						<input class="input100" type="password" name="password" placeholder="Password">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 
@@ -51,14 +50,22 @@ session_start();
 					</div>
 					<div class='text-center fs-18 m-t-25' style = " color:#a90000;">
 						<?php 
-						if (isset($_SESSION['error_message']))
-						echo $_SESSION['error_message']; 
+						if (!empty($_SESSION['error_message']))
+						echo $_SESSION['error_message'];
 						?>
 					</div>
-					<div class="text-center p-t-25">
-						<a class="txt1" href="#">
-							Forgot Password?
-						</a>
+					<div class="login-footer p-t-25">
+						<div class='login-footer-box text-center'>
+							<a class="txt1" href="#">
+								Forgot Password?
+							</a>
+						</div>
+						<div class='login-footer-box text-center'>
+							<span class='txt1'>Not registered?</span>
+							<a class="txt1" href="rejestracja.php">
+								 Create and account
+							</a>
+						</div>
 					</div>
 				</form>
 			</div>
@@ -67,6 +74,7 @@ session_start();
 	
 
 	<div id="dropDownSelect1"></div>
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 	<script src="js/main.js"></script>
 
 </body>
