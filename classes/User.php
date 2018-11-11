@@ -21,7 +21,8 @@
             } else {
                 // No user.
                 // Redirect to to logout.
-                header("Location: ../ajax/logout.php"); exit;
+                header("Location: ../ajax/logout.php");     
+                exit();
             }
         }
         public static function Find($username, $return_assoc = false) {
@@ -37,4 +38,4 @@
             return $user_found;
         }
     }
-?> 
+?>

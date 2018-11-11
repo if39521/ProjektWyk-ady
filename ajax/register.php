@@ -2,23 +2,19 @@
 	define('__CONFIG__', true);
 	require_once "../inc/config.php"; 
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
-		if (isset($_POST['loginReddirect'])) {
-			header("Location: ../index.php");
-			exit();
-		}
 		$error_msg = "";
 		$username = Filter::String( $_POST['username']);
 		$password = $_POST['password'];
 		$confirm_password = $_POST['confirm_password'];
 
 		if (empty($password) || empty($username)) {
-			$_SESSION['error_msg'] = "Username field and password must be filled!";
 			header("Location: ../rejestracja.php");
+			$_SESSION['error_msg'] = "Username field and password must be filled!";
 			exit();
 		}
 		if ($confirm_password !== $password) {
-			$_SESSION['error_msg'] = "Password's must match";
 			header("Location: ../rejestracja.php");
+			$_SESSION['error_msg'] = "Password's must match";
 			exit();
 		}
 
@@ -41,7 +37,7 @@
 			$_SESSION['username'] = $username;
 			$_SESSION['login_user'] = $username;
 			header("Location: ../welcome.php");
-			$return['is_logged_in'] = true;
+			exit();
 		}
 	}
 ?>

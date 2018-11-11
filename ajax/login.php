@@ -1,4 +1,5 @@
-<?php 
+<?php
+session_start();
 	// Allow the config
 	define('__CONFIG__', true);
 	// Require the config
@@ -16,17 +17,20 @@
 				// User is signed in
 				$_SESSION['error_message'] = null;
 				$_SESSION['login_user'] = $username;
-                header("Location: ../welcome.php");
-				$_SESSION['user_id'] = $ID_User;
+				$_SESSION['user_id'] = $user_id;
+				header("Location: ../welcome.php");
+				exit();
 			} else {
 				$_SESSION['error_message'] = "Your Password is invalid";
-                header("Location: ../index.php");
+				header("Location: ../index.php");
+				exit();
 			}
 		} else {
 			$_SESSION['error_message'] = "Account with this username doesnt exist";
 			header("Location: ../index.php");
+			exit();
 		}
 	} else {
-		exit('Invalid URL');
+		exit();
 	}
 ?>
