@@ -118,6 +118,16 @@ textarea:-moz-placeholder { color: #fff;}
 textarea::-moz-placeholder { color: #fff;}
 textarea:-ms-input-placeholder { color: #fff;}
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+ {
+  border: 1px solid green;
+  background-color: transparent !important;
+  -webkit-text-fill-color: green;
+  -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
 label {
   margin: 0;
   display: block;
@@ -147,6 +157,7 @@ iframe {
   color: #e5e5e5;
   padding-right: 5px; 
   line-height: 1.5;
+  text-decoration: none;
 }
 
 
@@ -156,6 +167,11 @@ iframe {
 .limiter {
   width: 100%;
   margin: 0 auto;
+}
+
+.acount-create {
+  color: #00e600;
+  font-weight: bold;
 }
 
 .container-login100 {

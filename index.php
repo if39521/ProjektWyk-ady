@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 ?>
 <!DOCTYPE html>
@@ -48,7 +48,7 @@ session_start();
 							Login
 						</button>
 					</div>
-					<div class='text-center fs-18 m-t-25' style = " color:#a90000;">
+					<div class='text-center fs-18 m-t-25' style = "color: #ff0a0a; font-weight: bold;">
 						<?php 
 						if (!empty($_SESSION['error_message']))
 						echo $_SESSION['error_message'];
@@ -62,7 +62,7 @@ session_start();
 						</div>
 						<div class='login-footer-box text-center'>
 							<span class='txt1'>Not registered?</span>
-							<a class="txt1" href="rejestracja.php">
+							<a class="acount-create txt1" href="rejestracja.php">
 								 Create and account
 							</a>
 						</div>
@@ -79,4 +79,3 @@ session_start();
 
 </body>
 </html>
-<!-- register and login form code here -->

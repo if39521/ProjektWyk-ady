@@ -46,7 +46,7 @@ session_start();
 							Sign Up
 						</button>
 					</div>
-					<div class='text-center fs-18 m-t-25' style = " color:#a90000;">
+					<div class='text-center fs-18 m-t-25' style = "color: #ff0a0a; font-weight: bold;">
 
 					<?php
 					if (!empty($_SESSION['error_msg'])) {
@@ -54,8 +54,8 @@ session_start();
 					}
 					?>
 					</div>
-					<div class='text-center fs-18 m-t-25' style = " color:#a90000;">
-                        <button class='head-to-login txt1' name='loginReddirect'>Already Signed Up?</button>
+					<div class='text-center fs-18 m-t-25'>
+                        <a href='index.php' class='head-to-login txt1' name='loginReddirect'>Already Signed Up?</a>
 					</div>
 				</form>
 			</div>
