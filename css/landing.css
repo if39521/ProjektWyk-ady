@@ -1,0 +1,158 @@
+body {
+    background: rgba(0, 0, 0, 0.9);
+    margin: 0;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.showcase::after {
+    content: '';
+    height: 100vh;
+    width: 100%;
+    background-image: url(../images/bg_landing.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    filter: blur(10px)  grayscale(100%);
+    -webkit-filter: blur(10px)  grayscale(100%);
+    transition: all 1000ms;
+}
+
+.showcase:hover::after {
+    filter: blur(0px)  grayscale(100%);
+    -webkit-filter: blur(0px)  grayscale(100%);
+}
+
+.showcase:hover .tresc {
+    filter: blur(1px);
+    -webkit-filter: blur(1px);
+}
+
+.tresc {
+    position: absolute;
+    z-index: 1;
+    top: 10%;
+    left: 50%;
+    margin-top: 105px;
+    margin-left: -145px;
+    width: 300px;
+    height: 350px;
+    text-align: center;
+    transition: all 1000ms;
+}
+
+
+.tresc .naglowek h1 {
+    color: #9152F8;
+    font-size: 2.2rem;
+    margin-top: 1rem;
+}
+
+.tresc .tekst {
+    line-height: 1.7;
+    margin-top: 1rem;
+}
+
+.container {
+    max-width: 960px;
+    margin: auto;
+    overflow: hidden;
+    padding: 4rem 1rem;
+}
+
+.grid-2 {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.center {
+    text-align: center;
+    margin: auto;
+}
+
+.bg-light {
+    background: #f4f4f4;
+    color: #333;
+}
+
+.bg-dark {
+    background: #333;
+    color: #f4f4f4;
+}
+
+footer {
+    padding: 1rem;
+}
+
+footer p {
+    margin: 0;
+}
+
+.btn_landing {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    font-family: Open Sans;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 20px;
+    background-color: #9152F8;
+    box-shadow: 1px 1px 10px 0px #000000;
+    -webkit-box-shadow: 1px 1px 10px 0px #000000;
+    -moz-box-shadow: 1px 1px 10px 0px #000000;
+    text-shadow: 1px 1px 20px #000000;
+    border: solid #000000 1px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.btn_landing:hover {
+    background: #100166;
+    text-decoration: none;
+}
+
+/* Small Screens */
+@media (max-width: 560px) {
+    .showcase::after {
+        height: 50vh;
+    }
+
+    .tresc {
+        top: 5%;
+        margin-top: 5px;
+    }
+
+    .tresc .logo {
+        height: 140px;
+        width: 140px;
+    }
+
+    .tresc .tekst {
+        display: none;
+    }
+
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .buttony div {
+        border-bottom: #333 dashed 1px;
+        padding: 1.2rem 1rem;
+    }
+}
+
+/* Landscape */
+@media (max-height: 500px) {
+    .tresc .naglowek,
+    .tresc .tekst {
+        display: none;
+    }
+
+    .tresc {
+        top: 0;
+    }
+}
