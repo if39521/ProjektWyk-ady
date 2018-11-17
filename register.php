@@ -17,7 +17,7 @@ session_start();
 <div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" action='ajax/register.php' method="POST">
+				<form class="login100-form validate-form" action='./ajax/userRegistry.php' method="POST">
 					<span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
 					</span>
@@ -47,15 +47,13 @@ session_start();
 						</button>
 					</div>
 					<div class='text-center fs-18 m-t-25' style = "color: #ff0a0a; font-weight: bold;">
-
-					<?php
-					if (!empty($_SESSION['error_msg'])) {
+					<?php 
+						if (!empty($_SESSION['error_msg']))
 						echo $_SESSION['error_msg'];
-					}
-					?>
+						?>
 					</div>
 					<div class='text-center fs-18 m-t-25'>
-                        <a href='index.php' class='head-to-login txt1' name='loginReddirect'>Already Signed Up?</a>
+                        <a href='index.php' class='head-to-login txt1' name='loginReddirect' >Already Signed Up?</a>
 					</div>
 				</form>
 			</div>
