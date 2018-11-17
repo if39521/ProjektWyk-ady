@@ -6,7 +6,8 @@ class File {
     private $type;
     private $subject;
     
-    public function __construct($filename, $type, $subject) {
+    public function __construct($file_id, $filename, $type, $subject) {
+        $this->file_id = $file_id;
         $this->filename = $filename;
         $this->type = $type;
         $this->subject = $subject;
@@ -68,6 +69,26 @@ class File {
     public function setFilename($filename)
     {
         $this->filename = $filename;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of file_id
+     */ 
+    public function getFile_id()
+    {
+        return $this->file_id;
+    }
+
+    /**
+     * Set the value of file_id
+     *
+     * @return  self
+     */ 
+    public function setFile_id($file_id)
+    {
+        $this->file_id = $file_id;
 
         return $this;
     }
