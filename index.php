@@ -17,7 +17,7 @@ session_start();
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" action='ajax/login.php' method="POST">
+				<form class="login100-form validate-form" action='./ajax/login.php' method="POST">
 					<span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
 					</span>
@@ -27,17 +27,23 @@ session_start();
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input class="input100" type="text" name="username" placeholder="Username">
+						<input class="input100" type="text" name="username" placeholder="Username"
+						value="<?php if(isset($_COOKIE["member_login"])) { echo $_COOKIE["member_login"]; } ?>"
+						>
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="password" placeholder="Password">
+						<input class="input100" type="password" name="password" placeholder="Password"
+						value="<?php if(isset($_COOKIE["member_password"])) { echo $_COOKIE["member_password"]; } ?>"
+						>
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 
 					<div class="contact100-form-checkbox">
-						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+						<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember"
+						<?php if(isset($_COOKIE["member_login"])) { ?> checked <?php } ?>
+						>
 						<label class="label-checkbox100" for="ckb1">
 							Remember me
 						</label>
@@ -62,7 +68,7 @@ session_start();
 						</div>
 						<div class='login-footer-box text-center'>
 							<span class='txt1'>Not registered?</span>
-							<a class="acount-create txt1" href="rejestracja.php">
+							<a class="acount-create txt1" href="register.php">
 								 Create and account
 							</a>
 						</div>

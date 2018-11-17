@@ -1,23 +1,33 @@
 <?php
-if(!defined('__CONFIG__')) {
-	exit('You do not have a config file');
-}
+require_once "../inc/config.php";
 class DB {
-	protected static $con;
-	private function __construct() {
+	protected static $connection;
+	private $host = DB_HOST;  
+	private $user = DB_USER;  
+	private $pass = DB_PASS;  
+	private $dbname = DB_NAME;  
+	private $stmt;
+
+	public function __construct() {
+		$dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname;  
 		try {
-			self::$con = new PDO( 'mysql:charset=utf8mb4;host=serwer1803435.home.pl;dbname=27809920_lewa', '27809920_lewa', 'iyuAth9Y' );
-			self::$con->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-			self::$con->setAttribute( PDO::ATTR_PERSISTENT, false );
+			self::$connection = new PDO( $dsn, $this->user, $this->pass );
+			self::$connection ->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+			self::$connection ->setAttribute( PDO::ATTR_PERSISTENT, false );
 		} catch (PDOException $e) {
 			echo "Could not connect to database."; exit;
-		}
+		}	
 	}
 	public static function getConnection() {
-		if (!self::$con) {
+		if (!self::$connection ) {
 			new DB();
 		}
-		return self::$con;
+		return self::$connection;
 	}
+
+	public static function closeConnection() {
+		self::$connection = null;
+	}
+
 }
 ?>
