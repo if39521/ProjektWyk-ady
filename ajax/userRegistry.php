@@ -12,6 +12,7 @@ if (!empty($_POST)) {
 		exit();
 	} else {
         header("Location: ../register.php");
+		exit();
     }
 }
 ?>

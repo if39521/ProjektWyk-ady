@@ -18,7 +18,7 @@ class UsersController
         }
         $password = password_hash($password, PASSWORD_DEFAULT);
         $remote_adress = ip2long($remote_adress);
-        $user = new User($username, $password, 'n', $remote_adress);
+        $user = new User(0, $username, $password, 'n', $remote_adress);
         $this->user_repo->addNewUser($user);
         return true;     
     }

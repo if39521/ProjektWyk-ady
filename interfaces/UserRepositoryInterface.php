@@ -6,7 +6,7 @@
 
     public function findUserByUsername($name);
 
-    public function getAllUsers($user_id);
+    public function getAllUsers();
 
     public function updateUser(User $user);
 

@@ -1,6 +1,7 @@
 <?php
 require_once "../classes/DatabaseAdapter.php";
-class UserRepository  {
+require_once "../interfaces/UserRepositoryInterface.php";
+class UserRepository implements UserRepositoryInterface {
     
     private $conection;
 
@@ -34,7 +35,7 @@ class UserRepository  {
         return $row;
     }
 
-    public function updateUserById(User $user) {
+    public function updateUser(User $user) {
         $user_id = (int) Filter::Int($user->user_id);
         $this->conection->query(
             'UPDATE Users SET

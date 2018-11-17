@@ -1,13 +1,15 @@
 <?php 
     class User {
 
+        public $user_id;
         public $username;
         public $password;
         public $user_role;
         public $user_remote_adress;
 
-        public function __construct($username, $password, $user_role = 'n', $user_remote_adress) {
-                
+        public function __construct($user_id, $username, $password, $user_role = 'n', $user_remote_adress) {
+
+                $this->user_id = $user_id;
                 $this->username = $username;
                 $this->password = $password;
                 $this->user_role = $user_role;
