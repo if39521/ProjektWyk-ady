@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!empty($_COOKIE['logged_user'])) {
+    $user = json_decode($_COOKIE['logged_user']);
+    $username = $user->username;
+}
 ?>
 <html>
    
@@ -9,8 +13,8 @@ session_start();
    
    <body>
       <h1>Welcome <?php 
-      if (!empty($_SESSION['login_user']))
-      echo $_SESSION['login_user']; ?></h1> 
+      if (isset($user))
+      echo $username; ?></h1> 
       <h2><a href = "ajax/logout.php">Sign Out</a></h2>
    </body>
    

@@ -33,7 +33,7 @@ require_once 'DB.php';
         }  
     
         public function execute(){  
-            return $this->stmt->execute();  
+            $this->stmt->execute(); 
         }  
     
         public function resultset() {  
@@ -43,7 +43,7 @@ require_once 'DB.php';
     
         public function single(){
             $this->execute();  
-            return $this->stmt->fetch(PDO::FETCH_ASSOC);  
+            return $this->stmt->fetch(PDO::FETCH_ASSOC);
         }  
     
         public function rowCount(){  
