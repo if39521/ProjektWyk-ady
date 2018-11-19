@@ -62,7 +62,7 @@ session_start();
 					</div>
 					<div class="login-footer p-t-25">
 						<div class='login-footer-box text-center'>
-							<a class="txt1" href="#">
+							<a class="txt1" href="forgotPassword.php">
 								Forgot Password?
 							</a>
 						</div>
