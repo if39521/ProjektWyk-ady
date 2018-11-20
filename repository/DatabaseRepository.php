@@ -54,8 +54,8 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
           $row = $this->connection->resultset();
           return $row;
         }
-        $this->conection->query('SELECT * FROM '.$table);
-        $row = $this->conection->resultset();
+        $this->connection->query('SELECT * FROM '.$table);
+        $row = $this->connection->resultset();
         return $row;
     }
 
