@@ -1,13 +1,13 @@
 <?php
-require_once '../interfaces/DatabaseAdapterInterface.php';
-require_once 'DB.php';
+require_once(__DIR__.'/DB.php');
+require_once(__DIR__.'/../interfaces/DatabaseAdapterInterface.php');
     class DatabaseAdapter implements DatabaseAdapterInterface {
 
         private $stmt;
         protected $con;
 
-        public function __construct() {
-            $this->con = DB::getConnection();
+        public function __construct(\PDO $pdo) {
+            $this->con = $pdo;
         }
         public function query($query){   
             $this->stmt = $this->con->prepare($query);  

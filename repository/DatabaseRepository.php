@@ -1,12 +1,13 @@
 <?php
-require_once "../classes/DatabaseAdapter.php";
-require_once "../interfaces/DatabaseRepositoryInterface.php";
+require_once(__DIR__.'/../interfaces/DatabaseRepositoryInterface.php');
+require_once(__DIR__.'/../classes/DatabaseAdapter.php');
+
 class DatabaseRepository implements DatabaseRepositoryInterface {
     
     private $connection;
 
-    public function __construct() {
-            $this->connection = new DatabaseAdapter();
+    public function __construct(\PDO $pdo) {
+            $this->connection = new DatabaseAdapter($pdo);
     }
 
     public function addNewRecord($table, $columns, $values, $column_names) {
@@ -46,7 +47,12 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
         return $row;
     }
 
-    public function getAllRecords($table) {
+    public function getAllRecords($table, $where=null) {
+        if($where != null) {
+          $this->connection->query('SELECT * FROM '.$table.' WHERE '.$where);
+          $row = $this->connection->resultset();
+          return $row;
+        }
         $this->conection->query('SELECT * FROM '.$table);
         $row = $this->conection->resultset();
         return $row;
