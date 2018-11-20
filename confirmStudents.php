@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once(__DIR__.'/ajax/loadStudents.php');
-$student_array = $user_controller->getAllStudents('s');
+$student_array = $user_controller->getAllStudents('n');
 if (isset($_SESSION['password_change_msg'])) {
 	$error = $_SESSION['password_change_msg'];
 };
@@ -25,10 +25,10 @@ if (isset($_SESSION['password_change_msg'])) {
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" action='./ajax/passwordChange.php' method="POST">
+				<form class="login100-form validate-form" action='./ajax/activateStudent.php' method="POST">
 
 					<span class="login100-form-title p-b-34 p-t-27">
-						Password reset
+						Confirm user as student
 					</span>
 					<div class="select">
 						<select name="selected_student" id="slct">
@@ -38,25 +38,15 @@ if (isset($_SESSION['password_change_msg'])) {
 						</select>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Enter new password">
-						<input class="input100" type="password" name="new_password" placeholder="New Password">
-						<span class="focus-input100" data-placeholder="&#xf191;"></span>
-                    </div>
-                    
-                    <div class="wrap-input100 validate-input" data-validate="Enter new password">
-						<input class="input100" type="password" name="new_password_confirm" placeholder="Confirm new password">
-						<span class="focus-input100" data-placeholder="&#xf191;"></span>
-					</div>
-
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
-							Change password
+							Activate student
 						</button>
 					</div>
 					<div class='text-center fs-18 m-t-25' style = "color: #ff0a0a; font-weight: bold;">
 						<?php 
-						if (!empty($_SESSION['password_change_msg']))
-						echo $_SESSION['password_change_msg'];
+						if (!empty($_SESSION['confirmation_student']))
+						echo $_SESSION['confirmation_student'];
 						?>
 					</div>
 				</form>
@@ -71,3 +61,5 @@ if (isset($_SESSION['password_change_msg'])) {
 
 </body>
 </html>
+
+?>

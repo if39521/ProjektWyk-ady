@@ -5,9 +5,10 @@ require_once(__DIR__.'/../classes/DatabaseAdapter.php');
 class DatabaseRepository implements DatabaseRepositoryInterface {
     
     private $connection;
-
-    public function __construct(\PDO $pdo) {
+    private $bind_names;
+    public function __construct(\PDO $pdo, $bind_names) {
             $this->connection = new DatabaseAdapter($pdo);
+            $this->bind_names = $bind_names;
     }
 
     public function addNewRecord($table, $columns, $values, $column_names) {
@@ -29,7 +30,7 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
               $buildSQL .= $columns.' = :value';
         }
         $this->connection->query('INSERT INTO '.$table.'
-        '.$columns.' VALUES (:username, :password, :user_role, :user_remote_adress)');
+        '.$columns.' VALUES '.$this->bind_names);
         if (is_array($values)) {
             for ($i = 0; $i <count($values); $i++) {
                 $this->connection->bind(':'.$column_names[$i], $values[$i]);
