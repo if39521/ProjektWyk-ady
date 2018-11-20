@@ -9,13 +9,11 @@ if (!empty($_POST)) {
 
 	$user_controller = new UsersController($pdo);
 	$username = $_POST['selected_student'];
-    $new_password = $_POST['new_password'];
-    $confirm_new_password = $_POST['new_password_confirm'];
-	if ($user_controller->changeUserPassword($user_role, $username, $new_password, $confirm_new_password)) {
+	if ($user_controller->confirmUserAsStudent($user_role, $username)) {
 		header("Location: ../welcome.php");
 		exit();
 	} else {
-		header("Location: ../forgotPassword.php");
+		header("Location: ../confirmStudents.php");
 	}
 }
 ?>

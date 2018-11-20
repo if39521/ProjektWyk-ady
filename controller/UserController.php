@@ -8,11 +8,12 @@ class UsersController
 {
     private $user_repo;
     private $columns = '(username, password, user_role, user_remote_adress)';
+    private $bindNames = '(:username, :password, :user_role, :user_remote_adress)';
     private $column_names= array('username', 'password', 'user_role', 'user_remote_adress');
     private $table = 'Users';
     private $where;
     public function __construct(\PDO $pdo) {
-        $this->user_repo = new DatabaseRepository($pdo);
+        $this->user_repo = new DatabaseRepository($pdo, $this->bindNames);
     }
 
     public function register($username,$password, $confirm_password, $remote_adress)
@@ -22,10 +23,8 @@ class UsersController
         }
         $password = password_hash($password, PASSWORD_DEFAULT);
         $remote_adress = ip2long($remote_adress);
-        $user = new User(0, $username, $password, 'n', $remote_adress);
         $this->user_repo->addNewRecord($this->table, $this->columns, 
-        array($username, $password, 'n', $remote_adress), $this->column_names);
-        return true;     
+        array($username, $password, 'a', $remote_adress), $this->column_names);
     }
 
     public function loginUser($username, $password) {
@@ -78,17 +77,13 @@ class UsersController
 
     }
 
-    public function confirmUserAsStudent(User $user,User $admin) {
-        $username = $user['username'];
-        $this->where = "username = '$username'";
-        $user_found = $this->checkIfUserExist();
-        if (!isset($admin->user_role) || !$user_found) {
+    public function confirmUserAsStudent($adminRole,$username) {
+        if (!$this->validateUserConfirmation($adminRole, $username)) {
             return false;
         }
-        if ($admin->user_role == 'a') {
-            return $this->user_repo->updateRecord($this->table, 'user_role', 's'); 
-        }
-        return false;
+        $this->where = "username = '$username'";
+        return $this->user_repo->updateRecord($this->table, 'user_role', 's', $this->where); 
+        
     }
 
     public function changeUserPassword($user_role, $username, $new_password, $confirm_password) {
@@ -96,6 +91,7 @@ class UsersController
             return false;
         }
         $this->where = "username = '$username'";
+        $new_password = password_hash($new_password, PASSWORD_DEFAULT);
         $this->user_repo->updateRecord($this->table, 'password', $new_password, $this->where);
         return true;
         
@@ -108,7 +104,7 @@ class UsersController
             return false;
         } 
         if (empty($username)) {
-            $_SESSION['password_change_msg'] = "You must choose student!";
+            $_SESSION['password_change_msg'] = "You must choose a student!";
             return false;
         }
 		if (empty($new_password) || empty($confirm_password)) {
@@ -119,6 +115,26 @@ class UsersController
 			$_SESSION['password_change_msg'] = "Password's must match";
 			return false;
         } 
+        return true;
+    }
+
+    public function validateUserConfirmation($admin_role, $username) {
+        
+        if (empty($username)) {
+            $_SESSION['confirmation_student'] = "You must choose an user!";
+            return false;
+        }
+
+        if ($admin_role != 'a') {
+            $_SESSION['confirmation_student'] = "You have no right's to perform this action!";
+            return false;
+        }
+
+        return true;
+    }
+
+    public function logout() {
+        setcookie('logged_user', '', time()-3600, "/");
         return true;
     }
 }
