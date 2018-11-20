@@ -1,7 +1,7 @@
 <?php
-require_once '../repository/DatabaseRepository.php';
-require_once '../classes/Filter.php';
-require_once '../entity/File.php';
+require_once(__DIR__.'/../repository/DatabaseRepository.php');
+require_once(__DIR__.'/../classes/Filter.php');
+require_once(__DIR__.'/../entity/File.php');
 
 class FilesController
 {
@@ -10,8 +10,8 @@ class FilesController
     private $column_names= array('filename', 'file_type ', 'user_role');
     private $table = 'Files';
 
-    public function __construct() {
-        $this->file_repo = new DatabaseRepository();
+    public function __construct(\PDO $pdo) {
+        $this->file_repo = new DatabaseRepository($pdo);
     }
 
 }

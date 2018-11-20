@@ -1,7 +1,8 @@
 <?php
-require_once '../repository/DatabaseRepository.php';
-require_once '../classes/Filter.php';
-require_once '../entity/User.php';
+require_once(__DIR__.'/../repository/DatabaseRepository.php');
+require_once(__DIR__.'/../classes/Filter.php');
+require_once(__DIR__.'/../entity/User.php');
+
 
 class UsersController
 {
@@ -10,8 +11,8 @@ class UsersController
     private $column_names= array('username', 'password', 'user_role', 'user_remote_adress');
     private $table = 'Users';
     private $where;
-    public function __construct() {
-        $this->user_repo = new DatabaseRepository();
+    public function __construct(\PDO $pdo) {
+        $this->user_repo = new DatabaseRepository($pdo);
     }
 
     public function register($username,$password, $confirm_password, $remote_adress)
@@ -71,6 +72,12 @@ class UsersController
         return true;
     }
 
+    public function getAllStudents($user_role) {
+        $this->where = "user_role = '$user_role'";
+        return $this->user_repo->getAllRecords($this->table, $this->where);
+
+    }
+
     public function confirmUserAsStudent(User $user,User $admin) {
         $username = $user['username'];
         $this->where = "username = '$username'";
@@ -84,24 +91,27 @@ class UsersController
         return false;
     }
 
-    public function changeUserPassword($user_role, $password, $new_password, $confirm_password) {
-        if (!$this->validatePasswordChangeCredentials($user_role, $password, $new_password, $confirm_password)) {
+    public function changeUserPassword($user_role, $username, $new_password, $confirm_password) {
+        if (!$this->validatePasswordChangeCredentials($user_role, $username, $new_password, $confirm_password)) {
             return false;
         }
+        $this->where = "username = '$username'";
         $this->user_repo->updateRecord($this->table, 'password', $new_password, $this->where);
         return true;
         
     }
 
-    public function validatePasswordChangeCredentials($user_role, $old_password, $new_password, $confirm_password) {
+    public function validatePasswordChangeCredentials($user_role, $username, $new_password, $confirm_password) {
 
-        $this->where = "password = '$old_password'";
-        return $user_found;
 		if ($user_role != 'a') {
 			$_SESSION['password_change_msg'] = "You have no right's to perform this action!";
             return false;
-		} 
-		if (empty($old_password) || empty($new_password) || empty($confirm_password)) {
+        } 
+        if (empty($username)) {
+            $_SESSION['password_change_msg'] = "You must choose student!";
+            return false;
+        }
+		if (empty($new_password) || empty($confirm_password)) {
 			$_SESSION['password_change_msg'] = "Password's field's must be filled!";
 			return false;
 		}
