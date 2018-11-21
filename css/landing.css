@@ -1,42 +1,39 @@
+@font-face {
+    font-family: Praho-Black;
+    src: url('../fonts/Praho-Black/Praho-Black.otf');
+}
+html, body {
+    overflow: hidden;
+}
 body {
     background: rgba(0, 0, 0, 0.9);
     margin: 0;
     color: #fff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+    }
 
-.showcase::after {
+.showcase{
     content: '';
     height: 100vh;
     width: 100%;
-    background-image: url(../images/bg_landing.jpg);
+    background-image: url(../images/bg_landing1.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     display: block;
-    filter: blur(10px)  grayscale(100%);
-    -webkit-filter: blur(10px)  grayscale(100%);
-    transition: all 1000ms;
+
 }
 
-.showcase:hover::after {
-    filter: blur(0px)  grayscale(100%);
-    -webkit-filter: blur(0px)  grayscale(100%);
-}
 
-.showcase:hover .tresc {
-    filter: blur(1px);
-    -webkit-filter: blur(1px);
-}
 
 .tresc {
     position: absolute;
     z-index: 1;
     top: 10%;
     left: 50%;
-    margin-top: 105px;
-    margin-left: -145px;
-    width: 300px;
+    margin-top: 125px;
+    margin-left: -260px;
+    width: 600px;
     height: 350px;
     text-align: center;
     transition: all 1000ms;
@@ -44,14 +41,15 @@ body {
 
 
 .tresc .naglowek h1 {
-    color: #9152F8;
-    font-size: 2.2rem;
+    font-family: Praho-Black;
+    color: #FFFFFF;
+    font-size: 3rem;
     margin-top: 1rem;
 }
 
 .tresc .tekst {
     line-height: 1.7;
-    margin-top: 1rem;
+    margin-top: 1.1rem;
 }
 
 .container {
@@ -91,27 +89,27 @@ footer p {
 }
 
 .btn_landing {
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
     color: #FFFFFF;
     font-family: Open Sans;
     font-size: 20px;
     font-weight: 400;
     padding: 20px;
-    background-color: #9152F8;
+    background-color:rgba(51,51,51,0.8);
     box-shadow: 1px 1px 10px 0px #000000;
     -webkit-box-shadow: 1px 1px 10px 0px #000000;
     -moz-box-shadow: 1px 1px 10px 0px #000000;
     text-shadow: 1px 1px 20px #000000;
-    border: solid #000000 1px;
     text-decoration: none;
     display: inline-block;
     cursor: pointer;
 }
 
 .btn_landing:hover {
-    background: #100166;
+    background: #f4f4f4;
+    color: #333;
     text-decoration: none;
 }
 
