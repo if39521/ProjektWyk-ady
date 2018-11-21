@@ -21,10 +21,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     display: block;
-
 }
-
-
 
 .tresc {
     position: absolute;
@@ -68,16 +65,6 @@ body {
 .center {
     text-align: center;
     margin: auto;
-}
-
-.bg-light {
-    background: #f4f4f4;
-    color: #333;
-}
-
-.bg-dark {
-    background: #333;
-    color: #f4f4f4;
 }
 
 footer {
@@ -142,7 +129,6 @@ footer p {
         padding: 1.2rem 1rem;
     }
 }
-
 /* Landscape */
 @media (max-height: 500px) {
     .tresc .naglowek,

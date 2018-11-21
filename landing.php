@@ -14,10 +14,10 @@ session_start();
 <section class="showcase" id="main">
     <div class="tresc">
         <div class="naglowek">
-            <h1>Witaj w Systemie Udostepniania Wykladow</h1>
+            <h1>Witaj w Systemie Udostępniania Wykładów</h1>
         </div>
         <div class="tekst">
-            <p>Aby uzyskac dostep do serwisu zaloguj sie lub zarejestruj</p>
+            <p>Aby uzyskać dostęp do serwisu zaloguj się lub zarejestruj</p>
         </div>
         <div class="buttony">
             <div class="container grid-2 center">
@@ -36,21 +36,21 @@ session_start();
         <div class="container-login100">
             <div class="wrap-login100">
                 <form class="login100-form validate-form" action='ajax/login.php' method="POST">
-                    <span class="login100-form-logo"> <em class="zmdi zmdi-landscape"></em> </span> <span class="login100-form-title p-b-34 p-t-27"> Log in </span>
-                    <div class="wrap-input100 validate-input" data-validate = "Enter username">
-                        <input class="input100" type="text" name="username" placeholder="Username">
+                    <span class="login100-form-logo"> <em class="zmdi zmdi-landscape"></em> </span> <span class="login100-form-title p-b-34 p-t-27">Logowanie</span>
+                    <div class="wrap-input100 validate-input" data-validate = "Wprowadź nazwę użytkownika">
+                        <input class="input100" type="text" name="username" placeholder="Użytkownik">
                         <span class="focus-input100" data-placeholder="&#xf207;"></span>
                     </div>
 
-                    <div class="wrap-input100 validate-input" data-validate="Enter password">
-                        <input class="input100" type="password" name="password" placeholder="Password">
+                    <div class="wrap-input100 validate-input" data-validate="Wprowadź hasło">
+                        <input class="input100" type="password" name="password" placeholder="Hasło">
                         <span class="focus-input100" data-placeholder="&#xf191;"></span>
                     </div>
 
                     <div class="contact100-form-checkbox">
                         <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
                         <label class="label-checkbox100" for="ckb1">
-                            Remember me
+                            Zapamiętaj mnie
                         </label>
                     </div>
 
@@ -70,11 +70,11 @@ session_start();
 
                         </div>
                         <div class='login-footer-box text-center'>
-                            <span class='txt1'>Not registered?</span>
+                            <span class='txt1'>Niezarejestrowany?</span>
                             <a class="acount-create txt1" href="#rejestracja">
-                                Create and account
+                                Stwórz konto
                             </a>
-                            <a href="#main">go back</a>
+                            <a href="#main">wróć</a>
                         </div>
                     </div>
                 </form>
@@ -93,27 +93,27 @@ session_start();
 					</span>
 
                 <span class="login100-form-title p-b-34 p-t-27">
-						Sign Up
+						Zarejestruj Się
 					</span>
 
-                <div class="wrap-input100 validate-input" data-validate = "Enter username">
-                    <input class="input100" type="text" name="username" placeholder="Username">
+                <div class="wrap-input100 validate-input" data-validate = "Wprowadź nazwę użytkownika">
+                    <input class="input100" type="text" name="username" placeholder="Użytkownik">
                     <span class="focus-input100" data-placeholder="&#xf207;"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input" data-validate="Enter password">
-                    <input class="input100" type="password" name="password" placeholder="Password">
+                <div class="wrap-input100 validate-input" data-validate="Wprowadź Hasło">
+                    <input class="input100" type="password" name="password" placeholder="Hasło">
                     <span class="focus-input100" data-placeholder="&#xf191;"></span>
                 </div>
 
-                <div class="wrap-input100 validate-input" data-validate="Confirm password">
-                    <input class="input100" type="password" name="confirm_password" placeholder="Confirm Password">
+                <div class="wrap-input100 validate-input" data-validate="Potwierdź hasło">
+                    <input class="input100" type="password" name="confirm_password" placeholder="Potwierdź Hasło">
                     <span class="focus-input100" data-placeholder="&#xf191;"></span>
                 </div>
 
                 <div class="container-login100-form-btn">
                     <button class="login100-form-btn" name='submit' type='submit'>
-                        Sign Up
+                        Zarejestruj się
                     </button>
                 </div>
                 <div class='text-center fs-18 m-t-25' style = "color: #ff0a0a; font-weight: bold;">
@@ -126,8 +126,8 @@ session_start();
                 </div>
                 <div class='text-center fs-18 m-t-25'>
 
-                    <a href='#logowanie' class='head-to-login txt1' name='loginReddirect'>Already Signed Up?</a><br>
-                    <a href="#main">go back</a>
+                    <a href='#logowanie' class='head-to-login txt1' name='loginReddirect'>Jesteś już zarejestrowany?</a><br>
+                    <a href="#main">wróć</a>
                 </div>
             </form>
         </div>
