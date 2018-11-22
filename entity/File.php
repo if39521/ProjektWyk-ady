@@ -1,6 +1,6 @@
 <?php
 
-class Filee {
+class File {
     private $file_id;
     private $filename;
     private $type;
