@@ -12,7 +12,7 @@ class HistoryController
     private $table = 'History';
 
     public function __construct(\PDO $pdo) {
-        $this->history_repo = new DatabaseRepository($pdo, null);
+        $this->history_repo = new DatabaseRepository($pdo, $this->bindNames);
     }
 
 
@@ -26,9 +26,9 @@ class HistoryController
         return $historyArray;
     }
 
-    public function addRecord($user_id, $file_id) {
+    public function addRecord($date, $user_id, $file_id) {
 		$this->history_repo->addNewRecord($this->table, $this->columns,
-		array($user_id, $file_id), $this->column_names);
+		array($date, $user_id, $file_id), $this->column_names);
 		return true;	
 
     }

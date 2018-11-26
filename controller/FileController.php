@@ -42,7 +42,7 @@ class FilesController
 		return $this->file_repo->getAllRecords($this->table);
 	}
 	
-	public function getFile() {
+	public function getFile($filename) {
 		$this->where = "filename = '$filename'";
         return $this->file_repo->findRecordByValue($this->table, $this->where);
 
