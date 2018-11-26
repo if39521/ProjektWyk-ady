@@ -35,12 +35,9 @@ if (!empty($_COOKIE['logged_user'])) {
 				?>
 				<tr>
 					<td>
-						<?php
-							if ($files['file_type'] == "W") { ?>
-								<a href="Wyklady/<?php echo $files['filename'] ?>" ><?php echo $files['filename'] ?></a>
-							<?php	} else { ?>
-								<a href="Kursy/<?php echo $files['filename'] ?>" ><?php echo $files['filename'] ?>
-						<?php	} ?>
+
+						<a href=<?php echo "ajax/download.php?file=".$files['filename']."&type=".$files['file_type']."" ?> ><?php echo $files['filename'] ?></a>
+	
 					</td>
 					<td>
 						<?php echo $files['file_type'];?>
