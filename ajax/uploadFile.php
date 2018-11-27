@@ -5,6 +5,7 @@ require_once(__DIR__.'/../classes/DB.php');
 
 if (isset($_POST['upload'])) {
 	$file_controller = new FilesController($pdo);
+	
 	$filetmp = $_FILES['plik']['tmp_name']; 
 	$filename = $_FILES['plik']['name'];
 	$filetype = $_POST['fileType'];

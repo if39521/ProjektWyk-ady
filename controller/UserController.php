@@ -71,7 +71,7 @@ class UsersController
         return true;
     }
 
-    public function getAllStudents($user_role) {
+    public function getAllUsers($user_role) {
         $this->where = "user_role = '$user_role'";
         return $this->user_repo->getAllRecords($this->table, $this->where);
 

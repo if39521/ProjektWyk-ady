@@ -2,9 +2,11 @@
 session_start();
 if (!empty($_COOKIE['logged_user'])) {
     $user = json_decode($_COOKIE['logged_user']);
-    $username = $user->username;
+	$username = $user->username;
+	$user_id = $user->user_id;
 	require_once(__DIR__.'/ajax/loadFiles.php');
 	$files_array = $file_controller->getAllFiles();
+	$history_array = $history_controller->getAllHistoryRecords($user_id);
 }
 ?>
 <html>
@@ -35,12 +37,9 @@ if (!empty($_COOKIE['logged_user'])) {
 				?>
 				<tr>
 					<td>
-						<?php
-							if ($files['file_type'] == "W") { ?>
-								<a href="Wyklady/<?php echo $files['filename'] ?>" ><?php echo $files['filename'] ?></a>
-							<?php	} else { ?>
-								<a href="Kursy/<?php echo $files['filename'] ?>" ><?php echo $files['filename'] ?>
-						<?php	} ?>
+
+						<a href=<?php echo "ajax/download.php?file=".$files['filename']."&type=".$files['file_type']."" ?> ><?php echo $files['filename'] ?></a>
+	
 					</td>
 					<td>
 						<?php echo $files['file_type'];?>

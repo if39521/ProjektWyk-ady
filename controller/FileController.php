@@ -13,6 +13,7 @@ class FilesController
 	private $bindNames = '(:filename, :c_date, :file_type, :file_subject)';
     private $column_names= array('filename','c_date','file_type', 'file_subject');
     private $table = 'Files';
+    private $where;
 
     public function __construct(\PDO $pdo) {
         $this->file_repo = new DatabaseRepository($pdo,$this->bindNames);
@@ -41,6 +42,12 @@ class FilesController
 		return $this->file_repo->getAllRecords($this->table);
 	}
 	
+	public function getFile($filename) {
+		$this->where = "filename = '$filename'";
+        return $this->file_repo->findRecordByValue($this->table, $this->where);
+
+	}
+
 	public function deleteFileDB($filename) {
 		$this->where = "filename = '$filename'";
 		return $this->file_repo->deteleRecordByValue($this->table,$this->where);
