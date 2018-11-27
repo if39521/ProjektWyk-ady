@@ -16,7 +16,6 @@ if (isset($_POST['upload'])) {
 		exit();
 	} else {
         header("Location: ../welcome.php");
-		$_SESSION['file_message'] = "Błąd metod FileController";
 		exit();
     }
 }
