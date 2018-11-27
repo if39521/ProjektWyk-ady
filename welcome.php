@@ -2,9 +2,11 @@
 session_start();
 if (!empty($_COOKIE['logged_user'])) {
     $user = json_decode($_COOKIE['logged_user']);
-    $username = $user->username;
+	$username = $user->username;
+	$user_id = $user->user_id;
 	require_once(__DIR__.'/ajax/loadFiles.php');
 	$files_array = $file_controller->getAllFiles();
+	$history_array = $history_controller->getAllHistoryRecords($user_id);
 }
 ?>
 <html>
