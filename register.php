@@ -53,7 +53,8 @@ session_start();
 						?>
 					</div>
 					<div class='text-center fs-18 m-t-25'>
-                        <a href='index.php' class='head-to-login txt1' name='loginReddirect' >Already Signed Up?</a>
+                        <a href='login.php' class='head-to-login txt1' name='loginReddirect' >Already Signed Up?</a>
+                        <a href="index.php">wróć</a>
 					</div>
 				</form>
 			</div>

@@ -21,7 +21,11 @@ if (isset($_SESSION['password_change_msg'])) {
 
 </head>
 <body>
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> kuba
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
@@ -44,7 +48,11 @@ if (isset($_SESSION['password_change_msg'])) {
 						</button>
 					</div>
 					<div class='text-center fs-18 m-t-25' style = "color: #ff0a0a; font-weight: bold;">
+<<<<<<< HEAD
 						<?php 
+=======
+						<?php
+>>>>>>> kuba
 						if (!empty($_SESSION['confirmation_student']))
 						echo $_SESSION['confirmation_student'];
 						?>
@@ -53,7 +61,11 @@ if (isset($_SESSION['password_change_msg'])) {
 			</div>
 		</div>
 	</div>
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> kuba
 
 	<div id="dropDownSelect1"></div>
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>

@@ -17,6 +17,10 @@ if (isset($_POST['upload'])) {
 		exit();
 	} else {
         header("Location: ../welcome.php");
+<<<<<<< HEAD
+=======
+		$_SESSION['file_message'] = "Błąd metod FileController";
+>>>>>>> kuba
 		exit();
     }
 }
