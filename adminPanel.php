@@ -3,8 +3,9 @@ session_start();
 if (!empty($_COOKIE['logged_user'])) {
     $user = json_decode($_COOKIE['logged_user']);
     $username = $user->username;
+    $user_role = $user->user_role;
 }
-if( $username == 'tj35975') {
+if( $user_role == 'a') {
     require_once(__DIR__.'/headerAdmin.php');
 }
 else{

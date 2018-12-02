@@ -14,10 +14,10 @@ session_start();
 </head>
 <body>
 	
-	<div class="limiter">
-		<div class="container-login100">
+	<div class="limiter login-container">
+		<div class="container-login100 container-login">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form" action='./ajax/login.php' method="POST">
+				<form class="login100-form validate-form" action='./ajax/userLogin.php' method="POST">
 					<span class="login100-form-logo">
 						<i class="zmdi zmdi-landscape"></i>
 					</span>

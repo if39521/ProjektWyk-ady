@@ -1,11 +1,16 @@
 <?php
 session_start();
 require_once(__DIR__.'/ajax/loadStudents.php');
-$student_array = $user_controller->getAllStudents('s');
+$student_array = $user_controller->getAllUsers('s');
+if (!empty($_COOKIE['logged_user'])) {
+    $user = json_decode($_COOKIE['logged_user']);
+    $username = $user->username;
+    $user_role = $user->user_role;
+}
 if (isset($_SESSION['password_change_msg'])) {
 	$error = $_SESSION['password_change_msg'];
 };
-
+require_once(__DIR__.'/headerAdmin.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +27,7 @@ if (isset($_SESSION['password_change_msg'])) {
 </head>
 <body>
 	
-	<div class="limiter">
+	<div class="limiter password-change-container">
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" action='./ajax/passwordChange.php' method="POST">

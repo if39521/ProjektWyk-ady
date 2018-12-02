@@ -5,8 +5,8 @@ require_once(__DIR__.'/../classes/DB.php');
 
 if (isset($_POST['delete'])) {
 	$file_controller = new FilesController($pdo);	
-	$filename = $_POST['filename'];
-	$file_type = $_POST['fileType'];
+	$fileName = basename($_GET['file']);
+	$file_type = basename($_GET['type']);
 	if (($file_controller->deleteFileDB($filename))&&($file_controller->deleteFile($filename,$file_type))) {	
 		header("Location: ../welcome.php");
 		exit();

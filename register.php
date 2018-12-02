@@ -14,8 +14,9 @@ session_start();
     <title>Register</title>
 </head>
 <body>
-<div class="limiter">
-		<div class="container-login100">
+<div class='register-container'>
+	<div class="limiter">
+		<div class="container-login100 container-register">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" action='./ajax/userRegistry.php' method="POST">
 					<span class="login100-form-logo">
@@ -49,7 +50,7 @@ session_start();
 					<div class='text-center fs-18 m-t-25' style = "color: #ff0a0a; font-weight: bold;">
 					<?php 
 						if (!empty($_SESSION['error_msg']))
-						echo $_SESSION['error_msg'];
+						echo json_encode($_SESSION['error_msg']);
 						?>
 					</div>
 					<div class='text-center fs-18 m-t-25'>
@@ -60,6 +61,7 @@ session_start();
 			</div>
 		</div>
 	</div>
+</div>
 	
 </body>
 </html>

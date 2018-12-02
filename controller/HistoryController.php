@@ -10,10 +10,7 @@ class HistoryController
 	private $bindNames = '(:c_date, :user_id, :file_id)';
     private $column_names= array('c_date','user_id', 'file_id');
     private $table = 'History';
-<<<<<<< HEAD
     private $where;
-=======
->>>>>>> kuba
 
     public function __construct(\PDO $pdo) {
         $this->history_repo = new DatabaseRepository($pdo, $this->bindNames);
@@ -25,7 +22,6 @@ class HistoryController
         return $userArray;
     }
 
-<<<<<<< HEAD
     public function getAllHistoryRecords($user_id = null) {
         $user_id == null ?
         $historyArray = $this->history_repo->getAllRecords($this->table)
@@ -38,13 +34,6 @@ class HistoryController
 
     
 
-=======
-    public function getAllHistoryRecords() {
-        $historyArray = $this->history_repo->getAllRecords($this->table);
-        return $historyArray;
-    }
-
->>>>>>> kuba
     public function addRecord($date, $user_id, $file_id) {
 		$this->history_repo->addNewRecord($this->table, $this->columns,
 		array($date, $user_id, $file_id), $this->column_names);

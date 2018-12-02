@@ -23,7 +23,7 @@ class UsersController
         }
         $password = password_hash($password, PASSWORD_DEFAULT);
         $remote_adress = ip2long($remote_adress);
-        $this->user_repo->addNewRecord($this->table, $this->columns, 
+        return $this->user_repo->addNewRecord($this->table, $this->columns, 
         array($username, $password, 'a', $remote_adress), $this->column_names);
     }
 
@@ -71,11 +71,7 @@ class UsersController
         return true;
     }
 
-<<<<<<< HEAD
     public function getAllUsers($user_role) {
-=======
-    public function getAllStudents($user_role) {
->>>>>>> kuba
         $this->where = "user_role = '$user_role'";
         return $this->user_repo->getAllRecords($this->table, $this->where);
 

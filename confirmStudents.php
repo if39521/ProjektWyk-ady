@@ -1,10 +1,16 @@
 <?php
 session_start();
 require_once(__DIR__.'/ajax/loadStudents.php');
-$student_array = $user_controller->getAllStudents('n');
+if (!empty($_COOKIE['logged_user'])) {
+    $user = json_decode($_COOKIE['logged_user']);
+    $username = $user->username;
+    $user_role = $user->user_role;
+}
+$student_array = $user_controller->getAllUsers('n');
 if (isset($_SESSION['password_change_msg'])) {
 	$error = $_SESSION['password_change_msg'];
 };
+require_once(__DIR__.'/headerAdmin.php');
 
 ?>
 <!DOCTYPE html>
@@ -17,17 +23,13 @@ if (isset($_SESSION['password_change_msg'])) {
 	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
 	<link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
-	<link rel="stylesheet" type="text/css" href="css/forgotPassword.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
 
 </head>
 <body>
-<<<<<<< HEAD
-	
-=======
-
->>>>>>> kuba
 	<div class="limiter">
-		<div class="container-login100">
+		<div class="container-login100  confirm-section">
 			<div class="wrap-login100">
 				<form class="login100-form validate-form" action='./ajax/activateStudent.php' method="POST">
 
@@ -48,11 +50,7 @@ if (isset($_SESSION['password_change_msg'])) {
 						</button>
 					</div>
 					<div class='text-center fs-18 m-t-25' style = "color: #ff0a0a; font-weight: bold;">
-<<<<<<< HEAD
-						<?php 
-=======
 						<?php
->>>>>>> kuba
 						if (!empty($_SESSION['confirmation_student']))
 						echo $_SESSION['confirmation_student'];
 						?>
@@ -61,11 +59,6 @@ if (isset($_SESSION['password_change_msg'])) {
 			</div>
 		</div>
 	</div>
-<<<<<<< HEAD
-	
-=======
-
->>>>>>> kuba
 
 	<div id="dropDownSelect1"></div>
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
@@ -73,5 +66,3 @@ if (isset($_SESSION['password_change_msg'])) {
 
 </body>
 </html>
-
-?>

@@ -122,9 +122,9 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus
  {
-  border: 1px solid #fffc;
+  border: 1px solid green;
   background-color: transparent !important;
-  -webkit-text-fill-color: #fff;
+  -webkit-text-fill-color: green;
   -webkit-box-shadow: 0 0 0px 1000px #000 inset;
   transition: background-color 5000s ease-in-out 0s;
 }
@@ -167,16 +167,34 @@ iframe {
 .limiter {
   width: 100%;
   margin: 0 auto;
+  height: calc(100vh - 42px);
 }
 
+.login-container {
+  width: 100%;
+  height: 100vh;
+  background: url("../images/bg-01.jpg") no-repeat center center;
+  background-size: cover;
+
+}
+.register-container {
+  width: 100%;
+  height: 100vh;
+  background: url("../images/nature.jpg") no-repeat center center;
+  background-size: cover;
+}
 .acount-create {
-  color: #9c1a0c;
+  color: #0c9c26;
   font-weight: bold;
 }
 
+.container-login, .container-register {
+  position: relative;
+  height: 100vh;
+}
 .container-login100 {
   width: 100%;  
-  min-height: 100vh;
+  min-height: calc(100vh - 42px);
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -213,10 +231,10 @@ iframe {
   padding: 55px 55px 37px 55px;
 
   background: #9152f8;
-  background: -webkit-linear-gradient(top, #222329, #292522);
-  background: -o-linear-gradient(top, #222329, #292522);
-  background: -moz-linear-gradient(top, #222329, #292522);
-  background: linear-gradient(top, #222329, #292522);
+  background: -webkit-linear-gradient(top, #15268c, #000000);
+  background: -o-linear-gradient(top, #15268c, #000000);
+  background: -moz-linear-gradient(top, #15268c, #000000);
+  background: linear-gradient(top, #15268c, #000000);
 }
 
 
@@ -572,6 +590,3 @@ iframe {
     opacity: 1;
   }
 }
-
-
-

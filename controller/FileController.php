@@ -38,14 +38,26 @@ class FilesController
 		} 
 	}	
 	
-	public function getAllFiles() {
-		return $this->file_repo->getAllRecords($this->table);
+	public function getAllFiles($where = null) {
+		if ($where == null) {
+			return $this->file_repo->getAllRecords($this->table);
+		}
+		return $this->file_repo->getAllRecords($this->table, $where);
 	}
 	
+	public function getAllFilesWithLimit($limit, $offset) {
+		return $this->file_repo->getAllRecordsWithLimit($this->table, $limit, $offset);
+	}
+
 	public function getFile($filename) {
 		$this->where = "filename = '$filename'";
         return $this->file_repo->findRecordByValue($this->table, $this->where);
 
+	}
+
+	public function changeFileName($filename, $newName) {
+		$this->where = "filename = '$filename'";
+		return $this->file_repo->updateRecord($this->table, 'filename', $newName, $this->where);
 	}
 
 	public function deleteFileDB($filename) {

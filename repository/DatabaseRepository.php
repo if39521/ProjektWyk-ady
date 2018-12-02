@@ -50,12 +50,18 @@ class DatabaseRepository implements DatabaseRepositoryInterface {
 
     public function getAllRecords($table, $where=null) {
         if($where != null) {
-          $this->connection->query('SELECT * FROM '.$table.' WHERE '.$where);
+          $this->connection->query('SELECT * FROM ' .$table. ' WHERE '.$where);
           $row = $this->connection->resultset();
           return $row;
         }
         $this->connection->query('SELECT * FROM '.$table);
         $row = $this->connection->resultset();
+        return $row;
+    }
+
+    public function getAllRecordsWithLimit($table, $limit, $offset) {
+        $this->connection->query('SELECT * FROM ' .$table. ' LIMIT ' .$limit. ' OFFSET ' .$offset );
+        $row =$this->connection->resultset();
         return $row;
     }
 

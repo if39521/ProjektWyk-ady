@@ -7,6 +7,8 @@
 
         public function getAllRecords($table);
 
+        public function getAllRecordsWithLimit($table, $limit, $offset);
+        
         public function updateRecord($table, $columns, $values, $where);
 
         public function deteleRecordByValue($table, $where);

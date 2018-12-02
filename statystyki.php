@@ -1,36 +1,53 @@
 <?php
-require_once(__DIR__.'/controller/HistoryController.php');
-require_once(__DIR__.'/classes/DB.php');
-date_default_timezone_set('UTC');//ustawiam domyślnąstrefę czasową
-$historyController = new HistoryController($pdo);
+session_start();
+if (!empty($_COOKIE['logged_user'])) {
+    $user = json_decode($_COOKIE['logged_user']);
+	$username = $user->username;
+	$user_role = $user->user_role;
+}
+require_once(__DIR__.'/ajax/countStats.php');
 
-$user_array = $historyController->getAllUserRecords();
-$history_array = $historyController->getAllHistoryRecords();
-
-	
-            $ile_dni=0;
-			$ile_tydz=0;
-			$ile_mies=0;
-			$ile_sem=0;
-			$month=date('m');
-			$today = date("Y.m.d");
-		     $akt_tydz=date('W');
-			
-			foreach($history_array as $history):
-				if(date("Y.m.d",strtotime($history['c_date']))==$today)
-					$ile_dni++;
-				
-				$mies=explode("-",$history['c_date']);
-				if($mies[1]==$month)
-					$ile_mies++;
-				
-				if($mies[1]>=10 and $mies[1]<=12 or $mies[1]==1 )
-					$ile_sem++;
-				 
-				$plik_tydz=date("W",strtotime($history['c_date']));
-				if($plik_tydz==$akt_tydz)
-					$ile_tydz++;
-				
-			endforeach;
-		
+if( $user_role == 'a') {
+    require_once(__DIR__.'/headerAdmin.php');
+}
+else{
+    require_once(__DIR__.'/headerUser.php');
+}
 ?>
+<div class='statistic-section'>
+    <div class='statistic-container'>
+        <div class='statistic-header'>
+            <h3 class="panel-title">Statystyki</h3>
+        </div>
+    
+        <div class='statistic-box-container'>
+            <div class='statistic-box'>
+                <h2><?php echo count($user_array) ?></h2>
+                <h4>Użytkowników</h4>
+            </div>
+            <div class='statistic-box'>
+                <h2><?php echo $ile_dni?></h2>
+                <h4>Pobrań w tym dniu</h4>
+            </div>
+            <div class='statistic-box'>
+                <h2><?php echo $ile_tydz?></h2>
+                <h4>Pobrań w tym tygodniu</h4>
+            </div>
+            <div class='statistic-box'>
+                <h2><?php echo $ile_mies?></h2>
+                <h4>Pobrań w tym miesiącu</h4>
+            </div>
+        </div>
+        
+    </div>
+</div>
+      <footer class="footer">
+          <div class="container">
+              <span class="text-muted">Grupa Lewa &copy; 2018</span>
+          </div>
+      </footer>
+
+      <script src="vendor/bootstrap/js/bootstrap.js"></script>
+   </body>
+   
+</html>
