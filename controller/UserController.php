@@ -24,7 +24,7 @@ class UsersController
         $password = password_hash($password, PASSWORD_DEFAULT);
         $remote_adress = ip2long($remote_adress);
         return $this->user_repo->addNewRecord($this->table, $this->columns, 
-        array($username, $password, 'a', $remote_adress), $this->column_names);
+        array($username, $password, 'n', $remote_adress), $this->column_names);
     }
 
     public function loginUser($username, $password) {
