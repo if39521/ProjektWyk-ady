@@ -60,7 +60,7 @@ else{
             <tr>
                 <td>
     
-                    <a href=<?php echo "ajax/download.php?file=".$files['filename']."&type=".$files['file_type']."" ?> ><?php echo $files['filename'] ?></a>
+                    <a href=<?php echo "ajax/watermark.php?file=".$files['filename']."&type=".$files['file_type']."" ?> ><?php echo $files['filename'] ?></a>
     
                 </td>
                 <td>
