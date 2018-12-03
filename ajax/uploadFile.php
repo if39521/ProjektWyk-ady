@@ -13,10 +13,10 @@ if (isset($_POST['upload'])) {
 	$date = date("Y-m-d");
 	if (($file_controller->uploadFileToDB($filename,$date, $filetype, $filesubject))
 		&&($file_controller->Upload($filename, $filetmp, $filetype))) {
-		header("Location: ../welcome.php");
+		header("Location: ../wyklady.php");
 		exit();
 	} else {
-        header("Location: ../welcome.php");
+        header("Location: ../wyklady.php");
 		$_SESSION['file_message'] = "Błąd metod FileController";
 		exit();
     }
