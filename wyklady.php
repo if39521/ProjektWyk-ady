@@ -53,12 +53,17 @@ else{
         <td>
             <p><b>Przedmiot</b></p>
         </td>
+		<?php 
+		if ($user_role == 'a') { ?>
         <td>
             <p><b>Edytuj</b></p>
         </td>
         <td>
             <p><b>Usuń</b></p>
         </td>
+		<?php
+		}
+		?>
     </tr>
     <?php
     foreach ($limit_files_array as $files) {
@@ -78,7 +83,10 @@ else{
             <td>
                 <?php echo $files['file_subject'];?>
             </td>
-            <td class='edit-box'>    
+            <?php 
+			if ($user_role =='a'){
+				?>
+			<td class='edit-box'>    
                 <form action='ajax/updateFile.php' method='POST'>
                     <input name='edit_course' class='edit_input' placeholder="Edytuj nazwę">
                     <input type='hidden' name='current_name' value='<?php echo $files['filename'] ?>'>
@@ -96,6 +104,9 @@ else{
                     </button>
                 </a>
             </td>
+			<?php
+			}
+			?>
         </tr>
     <?php } ?>
 </table>
@@ -135,6 +146,6 @@ else{
 </footer>
 
     <script src="vendor/bootstrap/js/bootstrap.js"></script>
-    </body>
+</body>
 
-    </html>
+</html>
