@@ -10,10 +10,10 @@ if (!empty($_POST)) {
 	$username = $_POST['username'];
 	$remote_adress = $_SERVER['REMOTE_ADDR'];
 	if ($user_controller->register($username, $password, $confirm_password, $remote_adress)) {
-		header("Location: ../index.php");
+		header("Location: ../register.php");
 		exit();
 	} else {
-        header("Location: ../register.php");
+        header("Location: ../index.php");
 		exit();
     }
 }
